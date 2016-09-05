@@ -1,0 +1,7 @@
+node_modules
+typings
+*.js
+*.log
+out/
+test/*.js
+test/*.d.ts

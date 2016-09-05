@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "noImplicitAny": true
+    },
+    "files": [
+        "test.ts",
+        "bundle.d.ts",
+        "../typings/index.d.ts"
+    ]
+}
