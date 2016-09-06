@@ -176,8 +176,31 @@ export interface LogManager {
     createLogger_(name: string, parent: Logger): Logger;
 }
 
-export type Type = {
+export enum Type {
+    /**
+     * Logs originating from the browser.
+     */
+    BROWSER,
 
+    /**
+     * Logs from a WebDriver client.
+     */
+    CLIENT,
+
+    /**
+     * Logs from a WebDriver implementation.
+     */
+    DRIVER,
+
+    /**
+     * Logs related to performance.
+     */
+    PERFORMANCE,
+
+    /**
+     * Logs from the remote server.
+     */
+    SERVER
 }
 
 /**
@@ -210,7 +233,7 @@ export interface Preferences {
 * @param {Logger=} opt_logger The logger to add the handler to; defaults
 *     to the root logger.
 */
-function addConsoleHandler(opt_logger: Logger): void;
+export function addConsoleHandler(opt_logger: Logger): void;
 
 /**
  * Removes the console log handler from the given logger.
@@ -219,12 +242,12 @@ function addConsoleHandler(opt_logger: Logger): void;
  *     to the root logger.
  * @see exports.addConsoleHandler
  */
-function removeConsoleHandler(opt_logger: Logger): void;
+export function removeConsoleHandler(opt_logger: Logger): void;
 
 /**
  * Installs the console log handler on the root logger.
  */
-function installConsoleHandler(): void;
+export function installConsoleHandler(): void;
 
 /**
  * Converts a level name or value to a {@link Level} value. If the name/value
@@ -234,7 +257,7 @@ function installConsoleHandler(): void;
  *     convert.
  * @return {!Level} The converted level.
  */
-function getLevel(nameOrValue: string | number): void;
+export function getLevel(nameOrValue: string | number): void;
 
 /**
  * Retrieves a named logger, creating it in the process. This function will
@@ -247,4 +270,4 @@ function getLevel(nameOrValue: string | number): void;
  * @param {string} name the logger's name.
  * @return {!Logger} the requested logger.
  */
-function getLogger(name: string): void;
+export function getLogger(name: string): void;
