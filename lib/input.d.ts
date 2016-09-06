@@ -74,7 +74,7 @@ export type Key = {
 }
 
 export class FileDetector {
-    new(): FileDetector;
+    constructor();
 
     handleFile(driver: WebDriver, path: string): Promise<string>;
 }
