@@ -28,7 +28,7 @@ export interface Entry {
      *     milliseconds since 0:00:00, January 1, 1970 UTC. If omitted, the
      *     current time will be used.
      * @param {string=} opt_type The log type, if known.
-    */
+     */
     new (level: Level | string | number, message: string, opt_timestamp: number, opt_type: string): Entry;
 
     /**
@@ -46,7 +46,9 @@ export interface Logger {
      */
     new (name: string, opt_level: Level): Logger;
 
-    /** @return {string} the name of this logger. */
+    /** 
+     * @return {string} the name of this logger.
+     */
     getName(): string;
 
     /**
@@ -62,7 +64,7 @@ export interface Logger {
 
     /**
      * @return {!Level} the effective level for this logger.
-    */
+     */
     getEffectiveLevel(): Level;
 
     /**
@@ -209,7 +211,6 @@ export enum Type {
 export interface Preferences {
     new (): Preferences;
 
-
     /**
      * Sets the desired logging level for a particular log type.
      * @param {(string|Type)} type The log type.
@@ -227,12 +228,12 @@ export interface Preferences {
 }
 
 /**
-* Adds the console handler to the given logger. The console handler will log
-* all messages using the JavaScript Console API.
-*
-* @param {Logger=} opt_logger The logger to add the handler to; defaults
-*     to the root logger.
-*/
+ * Adds the console handler to the given logger. The console handler will log
+ * all messages using the JavaScript Console API.
+ *
+ * @param {Logger=} opt_logger The logger to add the handler to; defaults
+ *     to the root logger.
+ */
 export function addConsoleHandler(opt_logger: Logger): void;
 
 /**

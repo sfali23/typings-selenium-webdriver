@@ -20,7 +20,7 @@ export interface Thenable<T> {
     then<R>(opt_callback: Function, opt_errback: Function): Promise<R>;
 }
 
-export class Promise<T> implements Thenable<T>{
+export class Promise<T> implements Thenable<T> {
     new(resolver: Function, opt_flow?: ControlFlow): Promise<T>;
 
     cancel(opt_reason?: string | Error): void;

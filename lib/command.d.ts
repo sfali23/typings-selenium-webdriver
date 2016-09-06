@@ -27,7 +27,7 @@ export interface Command {
      * Sets the parameters for this command.
      * @param {Object<*>} parameters The command parameters.
      * @return {Command} A self reference.
-    */
+     */
     setParameters(parameters: Object): Command;
 
     /**
@@ -39,7 +39,7 @@ export interface Command {
 
     /**
      * @return {Object} The parameters to send with this command.
-    */
+     */
     getParameters(): Object;
 }
 

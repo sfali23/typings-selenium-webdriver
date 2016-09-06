@@ -33,7 +33,6 @@ export class InvalidElementCoordinatesError extends WebDriverError {
     new(opt_error: string): InvalidCookieDomainError;
 }
 
-
 /**
  * An element command could not be completed because the element is in an invalid state, e.g. attempting to click an
  *  element that is no longer attached to the document.

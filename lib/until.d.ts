@@ -1,7 +1,6 @@
 import {Condition, WebElement, WebElementCondition, Alert} from './webdriver';
 import {By} from './by';
 
-
 export function ableToSwitchToFrame(frame: number | WebElement | By | Function): Condition<boolean>;
 
 export function alertIsPresent(): Condition<Alert>;

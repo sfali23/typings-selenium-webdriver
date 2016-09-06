@@ -1,5 +1,5 @@
-import {WebDriver} from "./webdriver";
-import {Promise} from "./promise";
+import {WebDriver} from './webdriver';
+import {Promise} from './promise';
 
 export enum Button {
     LEFT,

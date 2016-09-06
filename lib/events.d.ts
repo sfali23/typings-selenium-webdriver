@@ -1,6 +1,6 @@
 /**
  * Describes an event listener registered on an {@linkplain EventEmitter}.
-*/
+ */
 export class Listener {
 
     /**
