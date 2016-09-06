@@ -12,13 +12,13 @@ import * as logging from './lib/logging';
 import * as until from './lib/until';
 
 export {error};
-export{promise};
+export {promise};
 export {logging};
 export {until};
 
 export class ActionSequence extends _ActionSequence { }
 
-export class By extends _By { }
+export class By extends _By {}
 
 export class Capabilities extends _Capabilities { }
 
@@ -34,7 +34,7 @@ export class WebElement extends _WebElement { }
 
 export class WebElementPromise extends _WebElementPromise { }
 
-export class Builder extends _Builder {}
+export class Builder extends _Builder { }
 
 export {Button};
 export {Browser};
