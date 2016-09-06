@@ -23,7 +23,7 @@ export interface Thenable<T> {
 export class Promise<T> implements Thenable<T>{
     new(resolver: Function, opt_flow?: ControlFlow): Promise<T>;
 
-    cancel(opt_reason: string | Error): void;
+    cancel(opt_reason?: string | Error): void;
 
     catch<R>(errback: Function): Promise<R>;
 
@@ -31,7 +31,7 @@ export class Promise<T> implements Thenable<T>{
 
     isPending(): boolean;
 
-    then<R>(opt_callback: Function, opt_errback: Function): Promise<R>;
+    then<R>(opt_callback?: Function, opt_errback?: Function): Promise<R>;
 }
 
 export interface ControlFlow extends EventEmitter {
