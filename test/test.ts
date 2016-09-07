@@ -2,12 +2,16 @@
 /// <reference path="./bundle.d.ts" />
 
 import {WebDriver, Browser} from 'selenium-webdriver';
+import {Options} from 'selenium-webdriver/chrome';
 import webdriver = require('selenium-webdriver');
 
 let by = webdriver.By,
     until = webdriver.until;
 
-let driver: WebDriver = new webdriver.Builder().forBrowser(Browser.CHROME).usingServer('http://localhost:4444/wd/hub').build();
+let options = new Options();
+options.addArguments("start-maximized");
+
+let driver: WebDriver = new webdriver.Builder().forBrowser(Browser.CHROME).setChromeOptions(options).build();
 
 driver.get('http://www.google.com/ncr');
 driver.findElement(by.name('q')).sendKeys('webdriver');

@@ -6,6 +6,7 @@
     },
     "files": [
         "test.ts",
+        "chrome.test.ts",
         "bundle.d.ts",
         "../typings/index.d.ts"
     ]
