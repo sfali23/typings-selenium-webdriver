@@ -3,6 +3,13 @@ import {WebDriver} from './lib/webdriver';
 import {Capabilities, ProxyConfig, Browser} from './lib/Capabilities';
 import {ControlFlow} from './lib/promise';
 import {Preferences} from './lib/logging';
+import {Options as ChromeOptions} from './chrome';
+import {Options as EdgeOptions} from './edge';
+import {Options as IEOptions} from './ie';
+import {Options as OperaOptions} from './opera';
+import {Options as SafariOptions} from './safari';
+import {Options as FirefoxOptions} from './firefox';
+import {Agent} from 'http';
 
 export class Builder {
     new(): Builder;
@@ -17,9 +24,9 @@ export class Builder {
 
     getCapabilities(): Capabilities;
 
-    // TODO:
-    // getHttpAgent()
-    // usingHttpAgent(agent)
+    getHttpAgent(): Agent;
+
+    usingHttpAgent(agent: Agent): void;
 
     getServerUrl(): string;
 
@@ -43,12 +50,17 @@ export class Builder {
 
     withCapabilities(capabilities: Capabilities | Object): Builder;
 
-    // TODO: implement these methods
-    // getFirefoxOptions(): Options;
-    // setChromeOptions(options):Builder;
-    // setFirefoxOptions(options):Builder;
-    // setEdgeOptions(options):Builder;
-    // setIeOptions(options):Builder;
-    // setOperaOptions(options):Builder;
-    // setSafariOptions(options):Builder;
+    getFirefoxOptions(): FirefoxOptions;
+
+    setChromeOptions(options: ChromeOptions): Builder;
+
+    setFirefoxOptions(options: FirefoxOptions): Builder;
+
+    setEdgeOptions(options: EdgeOptions): Builder;
+
+    setIeOptions(options: IEOptions): Builder;
+
+    setOperaOptions(options: OperaOptions): Builder;
+
+    setSafariOptions(options: SafariOptions): Builder;
 }

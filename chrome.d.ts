@@ -1,7 +1,8 @@
 import {Preferences} from './lib/logging';
 import {ProxyConfig, Capabilities} from './lib/capabilities';
 import {WebDriver} from './lib/webdriver';
-import {ControlFlow} from './lib/promise';
+import {ControlFlow, Promise} from './lib/promise';
+import {Executor} from './lib/http';
 import {DriverService} from './remote';
 
 export class Options {
@@ -143,5 +144,73 @@ export class Options {
 }
 
 export class Driver extends WebDriver {
-    constructor(opt_config?: Capabilities | Options, opt_service?: DriverService, opt_flow?: ControlFlow, opt_executor?: Object):
+    constructor(opt_config?: Capabilities | Options, opt_service?: DriverService, opt_flow?: ControlFlow, opt_executor?: Executor);
+
+    /**
+     * Schedules a command to launch Chrome App with given ID.
+     */
+    launchApp(id: string): Promise<void>;
 }
+
+/**
+ * Creates {@link selenium-webdriver/remote.DriverService} instances that manage
+ * a [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/)
+ * server in a child process.
+ */
+export class ServiceBuilder {
+    constructor(opt_exe: string);
+
+    /**
+     * Creates a new DriverService using this instance's current configuration.
+     */
+    build(): DriverService;
+
+    /**
+     * Enables verbose logging.
+     */
+    enableVerboseLogging(): ServiceBuilder;
+
+    /**
+     * Sets the path of the log file the driver should log to. If a log file is not specified, the driver will log to stderr.
+     */
+    loggingTo(path: string): ServiceBuilder;
+
+    /**
+     * Sets which port adb is listening to. _The ChromeDriver will connect to adb if an {@linkplain Options#androidPackage 
+     * Android session} is requested, but * adb **must** be started beforehand._
+     */
+    setAdbPort(port: number): ServiceBuilder;
+
+    /**
+     * Sets the number of threads the driver should use to manage HTTP requests. By default, the driver will use 4 threads.
+     */
+    setNumHttpThreads(n: number): ServiceBuilder;
+
+    setStdio(config: (string | number)[]): ServiceBuilder;
+
+    /**
+     * Sets the base path for WebDriver REST commands (e.g. "/wd/hub"). By default, the driver will accept commands relative to "/".
+     */
+    setUrlBasePath(path: string): ServiceBuilder;
+
+    /**
+     * Sets the port to start the ChromeDriver on.
+     */
+    usingPort(port: number): ServiceBuilder;
+
+    /**
+     * Defines the environment to start the server under. This settings will be inherited by every browser session started by the server.
+     */
+    withEnvironment(env: Map<string, string>): ServiceBuilder;
+}
+
+/**
+ * Returns the default ChromeDriver service. If such a service has not been configured, one will be constructed using 
+ * the default configuration for a ChromeDriver executable found on the system PATH.
+ */
+export function getDefaultService(): DriverService;
+
+/**
+ * Sets the default service to use for new ChromeDriver instances.
+ */
+export function setDefaultService(service: DriverService): void;
