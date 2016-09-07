@@ -158,7 +158,7 @@ export class Driver extends WebDriver {
  * server in a child process.
  */
 export class ServiceBuilder {
-    constructor(opt_exe: string);
+    constructor(opt_exe?: string);
 
     /**
      * Creates a new DriverService using this instance's current configuration.
