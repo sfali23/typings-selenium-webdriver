@@ -6,3 +6,4 @@ out/
 test/*.js
 test/*.d.ts
 .vscode/*.*
+typedoc
