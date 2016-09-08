@@ -1,6 +1,6 @@
 
 import {WebDriver} from './lib/webdriver';
-import {Capabilities, ProxyConfig, Browser} from './lib/Capabilities';
+import {Capabilities, ProxyConfig, Browser} from './lib/capabilities';
 import {ControlFlow} from './lib/promise';
 import {Preferences} from './lib/logging';
 import {Options as ChromeOptions} from './chrome';
