@@ -2,7 +2,7 @@ import {EventEmitter as _EventEmitter} from './lib/events';
 import {WebDriver as _WebDriver, WebElement as _WebElement, WebElementPromise as _WebElementPromise} from './lib/webdriver';
 import {FileDetector as _FileDetector, Button, Key} from './lib/input';
 import {By as _By} from './lib/by';
-import {Capabilities as _Capabilities, Browser, Capability} from './lib/Capabilities';
+import {Capabilities as _Capabilities, Browser, Capability} from './lib/capabilities';
 import {Session as _Session} from './lib/session';
 import {ActionSequence as _ActionSequence} from './lib/actions';
 import {Builder as _Builder} from './builder';
