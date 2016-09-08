@@ -1,5 +1,8 @@
 import {Preferences} from './logging';
 
+/**
+ * Constants for browser
+ */
 export enum Browser {
     ANDROID,
     CHROME,

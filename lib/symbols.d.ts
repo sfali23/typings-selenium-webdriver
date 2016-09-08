@@ -1,4 +1,3 @@
-
 declare namespace symbols {
 
     export interface Symbols {
