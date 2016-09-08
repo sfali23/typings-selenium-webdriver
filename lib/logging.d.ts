@@ -1,13 +1,58 @@
 /**
  * Defines a message level that may be used to control logging output.
  */
-export interface Level {
+export class Level {
+
+    /**
+     * Indicates all log messages should be recorded.
+     */
+    static ALL: Level;
+
+    /**
+     * Log messages with a level of `700` or higher.
+     */
+    static DEBUG: Level;
+
+    /**
+     * Log messages with a level of `500` or higher.
+     */
+    static FINE: Level;
+
+    /**
+     * Log messages with a level of `400` or higher.
+     */
+    static FINER: Level;
+
+    /**
+     * Log messages with a level of `300` or higher.
+     */
+    static FINEST: Level;
+
+    /**
+     * Log messages with a level of `800` or higher.
+     */
+    static INFO: Level;
+
+    /**
+     * Indicates no log messages should be recorded.
+     */
+    static OFF: Level;
+
+    /**
+    * Log messages with a level of `1000` or higher.
+    */
+    static SEVERE: Level;
+
+    /**
+     * Log messages with a level of `900` or higher.
+     */
+    static WARNING: Level;
 
     /**
      * @param {string} name the level's name.
      * @param {number} level the level's numeric value.
      */
-    new (name: string, level: number): Level;
+    constructor(name: string, level: number);
 
     /** This logger's name. */
     name(): string;
@@ -19,7 +64,7 @@ export interface Level {
 /**
  * Describes a single log entry.
  */
-export interface Entry {
+export class Entry {
 
     /**
      * @param {(!Level|string|number)} level The entry level.
@@ -29,7 +74,7 @@ export interface Entry {
      *     current time will be used.
      * @param {string=} opt_type The log type, if known.
      */
-    new (level: Level | string | number, message: string, opt_timestamp: number, opt_type: string): Entry;
+    constructor(level: Level | string | number, message: string, opt_timestamp: number, opt_type: string);
 
     /**
      * @return {{level: string, message: string, timestamp: number,
@@ -38,13 +83,13 @@ export interface Entry {
     toJSON(): Object;
 }
 
-export interface Logger {
+export class Logger {
 
     /**
      * @param {string} name the name of this logger.
      * @param {Level=} opt_level the initial level for this logger.
      */
-    new (name: string, opt_level: Level): Logger;
+    constructor (name: string, opt_level: Level);
 
     /** 
      * @return {string} the name of this logger.
@@ -153,9 +198,9 @@ export interface Logger {
     finest(loggable: string | Function): void;
 }
 
-export interface LogManager {
+export class LogManager {
 
-    new (): LogManager;
+    constructor();
 
     /**
      * Retrieves a named logger, creating it in the process. This function will
@@ -208,8 +253,8 @@ export enum Type {
 /**
  * Describes the log preferences for a WebDriver session.
  */
-export interface Preferences {
-    new (): Preferences;
+export class Preferences {
+    constructor();
 
     /**
      * Sets the desired logging level for a particular log type.
@@ -221,10 +266,10 @@ export interface Preferences {
 
     /**
      * Converts this instance to its JSON representation.
-     * @return {!Object<string, string>} The JSON representation of this set of
+     * @return {Map<string, string>} The JSON representation of this set of
      *     preferences.
      */
-    toJSON(): Object;
+    toJSON(): Map<string, string>;
 }
 
 /**
@@ -258,7 +303,7 @@ export function installConsoleHandler(): void;
  *     convert.
  * @return {!Level} The converted level.
  */
-export function getLevel(nameOrValue: string | number): void;
+export function getLevel(nameOrValue: string | number): Level;
 
 /**
  * Retrieves a named logger, creating it in the process. This function will
@@ -271,4 +316,4 @@ export function getLevel(nameOrValue: string | number): void;
  * @param {string} name the logger's name.
  * @return {!Logger} the requested logger.
  */
-export function getLogger(name: string): void;
+export function getLogger(name: string): Logger;
