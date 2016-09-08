@@ -39,8 +39,8 @@ export class Level {
     static OFF: Level;
 
     /**
-    * Log messages with a level of `1000` or higher.
-    */
+     * Log messages with a level of `1000` or higher.
+     */
     static SEVERE: Level;
 
     /**

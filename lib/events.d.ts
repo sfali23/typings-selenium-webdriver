@@ -17,7 +17,7 @@ export class Listener {
  */
 export interface EventEmitter {
 
-     /**
+    /**
      * Registers a listener.
      * 
      * @param {string} type The type of event to listen for.
@@ -40,7 +40,7 @@ export interface EventEmitter {
      * @return {!Listener[]} The registered listeners for the given event
      *     type.
      */
-    listeners(type: string): Listener[];   
+    listeners(type: string): Listener[];
 
     /**
      * An alias for {@link #addListener() addListener()}.
