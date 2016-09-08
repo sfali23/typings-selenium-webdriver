@@ -10,6 +10,7 @@
         "chrome.test.ts",
         "chrome_mobile_emulation.ts",
         "parallel_flows.ts",
+        "logging.ts",
         "bundle.d.ts",
         "../typings/index.d.ts"
     ]
