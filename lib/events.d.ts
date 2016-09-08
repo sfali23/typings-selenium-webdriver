@@ -17,7 +17,15 @@ export class Listener {
  */
 export interface EventEmitter {
 
-    new (): EventEmitter;
+     /**
+     * Registers a listener.
+     * 
+     * @param {string} type The type of event to listen for.
+     * @param {!Function} fn The function to invoke when the event is fired.
+     * @param {Object=} opt_self The object in whose scope to invoke the listener.
+     * @return {!EventEmitter} A self reference.
+     */
+    addListener(type: string, fn: Function, opt_self?: Object): EventEmitter;
 
     /**
      * Fires an event and calls all listeners.
@@ -32,27 +40,16 @@ export interface EventEmitter {
      * @return {!Listener[]} The registered listeners for the given event
      *     type.
      */
-    listeners(type: string): Listener[];
+    listeners(type: string): Listener[];   
 
     /**
-     * Registers a listener.
-     * @param {string} type The type of event to listen for.
-     * @param {!Function} fn The function to invoke when the event is fired.
-     * @param {Object=} opt_self The object in whose scope to invoke the listener.
-     * @param {boolean=} opt_oneshot Whether the listener should b (e removed after
-     *    the first event is fired.
-     * @return {!EventEmitter} A self reference.
-     */
-    addListener_(type: string, fn: Function, opt_self: Object, opt_oneshot: boolean): EventEmitter;
-
-    /**
-     * Registers a listener.
+     * An alias for {@link #addListener() addListener()}.
      * @param {string} type The type of event to listen for.
      * @param {!Function} fn The function to invoke when the event is fired.
      * @param {Object=} opt_self The object in whose scope to invoke the listener.
      * @return {!EventEmitter} A self reference.
      */
-    addListener(type: string, fn: Function, opt_self: Object): EventEmitter;
+    on(type: string, fn: Function, opt_self?: Object): EventEmitter;
 
     /**
      * Registers a one-time listener which will be called only the first time an
@@ -62,16 +59,7 @@ export interface EventEmitter {
      * @param {Object=} opt_self The object in whose scope to invoke the listener.
      * @return {!EventEmitter} A self reference.
      */
-    once(type: string, fn: Function, opt_self: Object): EventEmitter;
-
-    /**
-     * An alias for {@link #addListener() addListener()}.
-     * @param {string} type The type of event to listen for.
-     * @param {!Function} fn The function to invoke when the event is fired.
-     * @param {Object=} opt_self The object in whose scope to invoke the listener.
-     * @return {!EventEmitter} A self reference.
-     */
-    on(type: string, fn: Function, opt_self: Object): EventEmitter;
+    once(type: string, fn: Function, opt_self?: Object): EventEmitter;
 
     /**
      * Removes a previously registered event listener.

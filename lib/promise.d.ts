@@ -1,4 +1,4 @@
-import {EventEmitter} from './events';
+import {EventEmitter, Listener} from './events';
 
 export interface CancellationError extends Error {
 
@@ -21,7 +21,7 @@ export interface Thenable<T> {
 }
 
 export class Promise<T> implements Thenable<T> {
-    new(resolver: Function, opt_flow?: ControlFlow): Promise<T>;
+    constructor(resolver: Function, opt_flow?: ControlFlow);
 
     cancel(opt_reason?: string | Error): void;
 
@@ -34,15 +34,29 @@ export class Promise<T> implements Thenable<T> {
     then<R>(opt_callback?: Function, opt_errback?: Function): Promise<R>;
 }
 
-export interface ControlFlow extends EventEmitter {
+export class ControlFlow implements EventEmitter {
 
-    async(fn: Function, opt_self: Object, ...var_args: Object[]): void;
+    addListener(type: string, fn: Function, opt_self?: Object): ControlFlow;
+
+    async(fn: Function, opt_self?: Object, ...var_args: Object[]): void;
+
+    emit(type: string, ...args: any[]): void;
 
     execute<T>(fn: Function, opt_description: string): Promise<T>;
 
     getSchedule(opt_includeStackTraces: string): string;
 
     isIdle(): boolean;
+
+    listeners(type: string): Listener[];
+
+    once(type: string, fn: Function, opt_self?: Object): ControlFlow;
+
+    on(type: string, fn: Function, opt_self?: Object): ControlFlow;
+
+    removeListener(type: string, listenerFn: Function): ControlFlow;
+
+    removeAllListeners(opt_type: any): ControlFlow;
 
     reset(): void;
 
@@ -51,7 +65,6 @@ export interface ControlFlow extends EventEmitter {
     timeout<T>(ms: number, opt_description: string): Promise<T>;
 
     wait<T>(condition: Promise<T> | Function, opt_timeout: number, opt_message: string): Promise<T>;
-
 }
 
 export interface Deferred<T> {

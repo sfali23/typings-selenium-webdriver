@@ -12,7 +12,7 @@ import {Options as FirefoxOptions} from './firefox';
 import {Agent} from 'http';
 
 export class Builder {
-    new(): Builder;
+    constructor();
 
     build(): WebDriver;
 
