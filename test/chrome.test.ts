@@ -1,16 +1,17 @@
 import chrome = require('selenium-webdriver/chrome');
 import webdriver = require('selenium-webdriver');
 import {Browser} from 'selenium-webdriver';
-import fs = require('fs');
 import path = require('path');
 
 let by = webdriver.By,
     until = webdriver.until;
 
-const base_path = getUserHome() + path.sep + ".webdriver";
-const log_file = base_path + path.sep + Browser.CHROME + ".log";
+const log_file = "." + path.sep + Browser.CHROME + ".log";
+const drivers_dir = "./server/drivers";
+const driver_extension = process.platform === "win32" ? ".exe" : "";
+const driver_exe = drivers_dir + path.sep + "chromedriver" + driver_extension;
 
-let service = new chrome.ServiceBuilder().loggingTo(log_file).enableVerboseLogging().build();
+let service = new chrome.ServiceBuilder(driver_exe).loggingTo(log_file).enableVerboseLogging().build();
 
 let options = new chrome.Options();
 options.addArguments("start-maximized");
@@ -26,7 +27,3 @@ driver.wait(until.titleIs('webdriver - Google Search'), 100000).then(function (r
         driver.quit();
     }, 10000);
 });
-
-function getUserHome() {
-    return process.env.HOME || process.env.USERPROFILE;
-}

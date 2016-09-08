@@ -5,8 +5,11 @@
         "noImplicitAny": true
     },
     "files": [
+        "test.common.ts",
         "test.ts",
         "chrome.test.ts",
+        "chrome_mobile_emulation.ts",
+        "parallel_flows.ts",
         "bundle.d.ts",
         "../typings/index.d.ts"
     ]

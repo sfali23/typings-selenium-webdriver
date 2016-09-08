@@ -2,23 +2,12 @@
 /// <reference path="./bundle.d.ts" />
 
 import {WebDriver, Browser} from 'selenium-webdriver';
-import {Options} from 'selenium-webdriver/chrome';
+import {Options as ChromOptions} from 'selenium-webdriver/chrome';
 import webdriver = require('selenium-webdriver');
+import common = require('./test.common');
 
-let by = webdriver.By,
-    until = webdriver.until;
-
-let options = new Options();
+let options = new ChromOptions();
 options.addArguments("start-maximized");
 
 let driver: WebDriver = new webdriver.Builder().forBrowser(Browser.CHROME).setChromeOptions(options).build();
-
-driver.get('http://www.google.com/ncr');
-driver.findElement(by.name('q')).sendKeys('webdriver');
-driver.findElement(by.name('btnG')).click();
-driver.wait(until.titleIs('webdriver - Google Search'), 100000).then(function (result: boolean) {
-    setTimeout(function () {
-        console.log("Quiting");
-        driver.quit();
-    }, 10000);
-});
+common.search('webdriver', driver);
