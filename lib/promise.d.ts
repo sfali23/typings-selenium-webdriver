@@ -85,6 +85,7 @@ export class MultipleUnhandledRejectionError extends Error {
     constructor(errors: Set<any>);
 }
 
+//TODO: find out how decalre EventType in context of ControlFlow
 export type EventType = {
 
     /** Emitted when all tasks have been successfully executed. */
