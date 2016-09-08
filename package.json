@@ -9,6 +9,7 @@
     "typedoc": "typedoc --module es5 --target es5 --includeDeclarations --excludeExternals --readme docs_index.md --name \"TypeScript definitions for Selenium WebDriver\" --mode file --out typedoc index.d.ts chrome.d.ts firefox.d.ts typings/index.d.ts"
   },
   "license": "MIT",
+  "author": "Syed Farhan Ali",
   "keywords": [
     "typings",
     "selenium-webdriver"
