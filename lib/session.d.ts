@@ -1,18 +1,13 @@
 import {Capabilities} from './capabilities';
 
-declare namespace session {
+export class Session {
+    constructor(id: string, capabilities: Object | Capabilities);
 
-    export interface Session {
-        new (id: string, capabilities: Object | Capabilities): Session;
+    getCapabilities(): Capabilities;
 
-        getCapabilities(): Capabilities;
+    getCapability(key: string): Object;
 
-        getCapability(key: string): Object;
+    getId(): string;
 
-        getId(): string;
-
-        toJSON(arg0: string): string;
-    }
+    toJSON(arg0: string): string;
 }
-
-export = session;

@@ -11,7 +11,7 @@ export function search(searchTerm: string, driver: WebDriver) {
     let title: string = searchTerm + " - Google Search";
     driver.wait(until.titleIs(title), 100000).then(function (result: boolean) {
         setTimeout(function () {
-            console.log("Quiting");
+            console.log("Quitting");
             driver.quit();
         }, 10000);
     });

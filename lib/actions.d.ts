@@ -3,7 +3,7 @@ import {Button, Key} from './input';
 import {Promise} from './promise';
 
 export class ActionSequence {
-    new(driver: WebDriver): ActionSequence;
+    constructor(driver: WebDriver);
 
     click(opt_elementOrButton?: WebElement | Button, opt_button?: Button): ActionSequence;
 
@@ -27,7 +27,7 @@ export class ActionSequence {
 }
 
 export class TouchSequence {
-    new(driver: WebDriver): TouchSequence;
+    constructor(driver: WebDriver);
 
     doubleTap(elem: WebElement): TouchSequence;
 

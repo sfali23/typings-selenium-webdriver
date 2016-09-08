@@ -8,7 +8,7 @@ import {Capabilities} from './capabilities';
 import {FileDetector} from './input';
 
 export class Alert {
-    new(driver: WebDriver, text: string): Alert;
+    constructor(driver: WebDriver, text: string);
 
     accept(): Promise<void>;
 
@@ -22,7 +22,7 @@ export class Alert {
 }
 
 export class AlertPromise extends Alert implements Thenable<Alert> {
-    new(driver: WebDriver, text: string): AlertPromise;
+    constructor(driver: WebDriver, text: string);
 
     cancel(opt_reason: string | Error): void;
 
@@ -36,7 +36,7 @@ export class AlertPromise extends Alert implements Thenable<Alert> {
 }
 
 export class WebDriver {
-    new<T>(sessio: Session | Promise<T>, executor: Executor, opt_flow?: ControlFlow): WebDriver;
+    constructor(sessio: Session | Promise<any>, executor: Executor, opt_flow?: ControlFlow);
 
     actions(): ActionSequence;
 
@@ -98,7 +98,7 @@ export class WebDriver {
 }
 
 export class Condition<OUT> {
-    new(message: string, fn: Function): Condition<OUT>;
+    constructor(message: string, fn: Function);
 
     description(): string;
 
@@ -106,7 +106,7 @@ export class Condition<OUT> {
 }
 
 export class Logs {
-    new(driver: WebDriver): Logs;
+    constructor(driver: WebDriver);
 
     get(type: Type): Promise<Entry[]>;
 
@@ -114,7 +114,7 @@ export class Logs {
 }
 
 export class Navigation {
-    new(driver: WebDriver): Navigation;
+    constructor(driver: WebDriver);
 
     back(): Promise<void>;
 
@@ -126,7 +126,7 @@ export class Navigation {
 }
 
 export class Options {
-    new(driver: WebDriver): Options;
+    constructor(driver: WebDriver);
 
     addCookie(spec: Object): Promise<void>;
 
@@ -146,7 +146,7 @@ export class Options {
 }
 
 export class Timeouts {
-    new(driver: WebDriver): Timeouts;
+    constructor(driver: WebDriver);
 
     implicitlyWait(ms: number): Promise<void>;
 
@@ -156,7 +156,7 @@ export class Timeouts {
 }
 
 export class Window {
-    new(driver: WebDriver): Window;
+    constructor(driver: WebDriver);
 
     getPosition(): Promise<Object>;
 
@@ -170,7 +170,7 @@ export class Window {
 }
 
 export class WebElement {
-    new(driver: WebDriver, id: Thenable<string> | string): WebElement;
+    constructor(driver: WebDriver, id: Thenable<string> | string);
 
     clear(): Promise<void>;
 
@@ -218,7 +218,7 @@ export class WebElement {
 }
 
 export class WebElementPromise extends WebElement implements Thenable<WebElement> {
-    new(driver: WebDriver, el: Promise<WebElement>): WebElementPromise;
+    constructor(driver: WebDriver, el: Promise<WebElement>);
 
     cancel(opt_reason: string | Error): void;
 
@@ -240,11 +240,11 @@ export class WebElementPromise extends WebElement implements Thenable<WebElement
 }
 
 export class WebElementCondition extends Condition<WebElement | WebElementPromise> {
-    new(message: string, fn: Function | WebElement | WebElementPromise): WebElementCondition;
+    constructor(message: string, fn: Function | WebElement | WebElementPromise);
 }
 
 export class TargetLocator {
-    new(driver: WebDriver): TargetLocator;
+    constructor(driver: WebDriver);
 
     activeElement(): WebElementPromise;
 
