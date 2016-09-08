@@ -5,7 +5,7 @@
   "scripts": {
     "build": "typings bundle -o test/bundle.d.ts",
     "test": "tsc -p test",
-    "lint": "tslint -c tslint.json *.d.ts lib/*.d.ts http/*.d.ts",
+    "lint": "tslint -c tslint.json *.d.ts lib/*.d.ts http/*.d.ts test/*.ts",
     "typedoc": "typedoc --module es5 --target es5 --includeDeclarations --excludeExternals --readme docs_index.md --name \"TypeScript definitions for Selenium WebDriver\" --mode file --out typedoc index.d.ts chrome.d.ts firefox.d.ts typings/index.d.ts"
   },
   "license": "MIT",

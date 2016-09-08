@@ -23,7 +23,7 @@ function search(searchTerm: string, index: number) {
 }
 
 function runSearch() {
-    search("webdriver", 0);
-    search("nodejs", 1);
-    search("selenium", 2);
+    search('webdriver', 0);
+    search('nodejs', 1);
+    search('selenium', 2);
 }
